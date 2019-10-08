@@ -10,7 +10,4 @@ class BasePage():
         self.url = url
     
     def open(self):
-    """
-    Метод для открытия страницы по ссылке
-    """
         self.browser.get(self.url)
