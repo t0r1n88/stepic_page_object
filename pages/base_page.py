@@ -1,4 +1,5 @@
 class BasePage():
+
     """
     Базовый класс
     Конструктор экземпляра класса принимает на вход:
@@ -10,4 +11,9 @@ class BasePage():
         self.url = url
     
     def open(self):
+        """
+        метод открывающий страницу по ссылке
+        """
         self.browser.get(self.url)
+    
+    

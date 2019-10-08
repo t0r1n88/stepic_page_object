@@ -12,4 +12,9 @@ class MainPage(BasePage):
         """
         link = self.browser.find_element(By.CSS_SELECTOR,'#login_link')
         link.click()
-        
+    
+    def should_be_login_link(self):
+        """
+        Проверка налиичия ссылки
+        """
+        self.browser.find_element(By.CSS_SELECTOR, "#login_link_invalid")
