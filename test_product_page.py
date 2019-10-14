@@ -1,5 +1,6 @@
 import pytest
 from .pages.product_page import ProductPage
+from .pages.locators import ProductPageLocators
 import time
 
 
@@ -23,5 +24,8 @@ def test_guest_can_add_product_to_basket(browser):
 	
 
 	# Проверки на ожидаемый результат
-	page.check_correct_add_product_to_basket()
-	time.sleep(150)
+	
+	page.check_correct_name_product_in_basket(ProductPageLocators.PRODUCT_NAME)
+	page.check_correct_price_product_in_basket(ProductPageLocators.PRICE_PRODUCT)
+	time.sleep(10)
+	

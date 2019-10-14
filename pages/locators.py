@@ -19,7 +19,7 @@ class ProductPageLocators():
 	"""
 	BUTTON_ADD_TO_BASKET = (By.CLASS_NAME,'btn-add-to-basket')
 	PRODUCT_NAME = (By.CSS_SELECTOR, '.product_main h1')
-	MESSAGE_ADD_PRODUCT_TO_BASKET = (By.CSS_SELECTOR, '.alert-success > .alertinner')
+	MESSAGE_ADD_PRODUCT_TO_BASKET = (By.CSS_SELECTOR, '.alert-success > .alertinner strong')
 	PRICE_PRODUCT = (By.CSS_SELECTOR,'.product_main > .price_color')
-	PRICE_BASKET_AFTER_ADD_PRODUCT = (By.CSS_SELECTOR, '.alert-info > .alertinner p')
+	PRICE_BASKET_AFTER_ADD_PRODUCT = (By.CSS_SELECTOR, '.alert-info > .alertinner p strong')
 	
