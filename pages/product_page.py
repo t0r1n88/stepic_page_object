@@ -64,7 +64,10 @@ class ProductPage(BasePage):
 		assert price_product == price_basket_after_add_product, 'Стоимость товара отличается'
 		
 
-
+	def should_not_be_success_message(self):
+		assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ADD_PRODUCT_TO_BASKET), 'Success message is presented, but should not be'
 	
 		
 
+	def should_not_be_success_message_is_disappeared(self):
+		assert self.is_disappeared(*ProductPageLocators.MESSAGE_ADD_PRODUCT_TO_BASKET), 'Success message not disappeared'
