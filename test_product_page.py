@@ -3,14 +3,17 @@ from .pages.product_page import ProductPage
 from .pages.locators import ProductPageLocators
 import time
 
-
-def test_guest_can_add_product_to_basket(browser):
+@pytest.mark.parametrize('link', [0,1,2,3,5,6,
+									pytest.param(7, marks=pytest.mark.xfail(reason='wrong value')),
+									8,9])
+						  
+def test_guest_can_add_product_to_basket(browser,link):
 	"""
 	Тест для тестирования возможности добавления товара в корзину
 	"""
 	# Открываем страницу товара
-	#link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
-	link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
+	link = f'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=offer{link}'
+
 	# Инициализируем PageObject и передаем туда обьект браузера и линк
 	page = ProductPage(browser,link)
 	# Открываем страницу
@@ -27,5 +30,6 @@ def test_guest_can_add_product_to_basket(browser):
 	
 	page.check_correct_name_product_in_basket(ProductPageLocators.PRODUCT_NAME)
 	page.check_correct_price_product_in_basket(ProductPageLocators.PRICE_PRODUCT)
+
 	
 	
