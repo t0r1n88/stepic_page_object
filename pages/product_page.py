@@ -9,6 +9,14 @@ class ProductPage(BasePage):
 	"""
 	Page object страницы товара
 	"""
+	def convert_string(self,text):
+		"""
+		Метод для очистки строки с ценой товара. Можно было кстати использовать регулярки, надо потом попробовать
+		"""
+		text = text.replace(',', '.')
+		return float(text.split()[0])
+		
+		
 	def extract_text(self,name_element):
 		"""
 		Метод для извлечения текста заданного элемента
@@ -35,12 +43,7 @@ class ProductPage(BasePage):
 		product_name = self.extract_text(product_name)
 		# Так как имя книги в сообщении о добавлении, выделяется тегом strong, мы забираем только имя книги)
 		message_add_product_to_basket = self.extract_text(ProductPageLocators.MESSAGE_ADD_PRODUCT_TO_BASKET)
-		
-		# text = self.browser.find_element(By.CSS_SELECTOR, '.alert-success > .alertinner strong').text
-		# print(text)
-		print(product_name)
-		print()
-		print(message_add_product_to_basket)
+
 		assert  product_name == message_add_product_to_basket, 'Что то пошло не так, имя товара не совпадает с именем товара добавленного  в корзину. Омниссия недоволен'
 	
 	def check_correct_price_product_in_basket(self,price_product):
@@ -50,17 +53,13 @@ class ProductPage(BasePage):
 		"""
 		#Получаем цену товара в виде строки
 		string_price_product = self.extract_text(price_product)
-		#Конвертируем строку во float, предварительно отделив цифры от знака валюты с помощью split
-		#price_product = float(string_price_product.split()[0])
+	
 		# Получаем цену корзины
-		price_basket_after_add_product = self.extract_text(ProductPageLocators.PRICE_BASKET_AFTER_ADD_PRODUCT)
+		string_price_basket_after_add_product = self.extract_text(ProductPageLocators.PRICE_BASKET_AFTER_ADD_PRODUCT)
 		# #Конвертируем строку во float, предварительно отделив цифры от знака валюты с помощью split
-		#price_basket_after_add_product = float(string_price_basket_after_add_product.split()[0])
-		print(string_price_product)
-		print()
-		print(price_basket_after_add_product)
 		
-
+		price_product = self.convert_string(string_price_product)
+		price_basket_after_add_product = self.convert_string(string_price_basket_after_add_product)
 		
 		assert price_product == price_basket_after_add_product, 'Стоимость товара отличается'
 		

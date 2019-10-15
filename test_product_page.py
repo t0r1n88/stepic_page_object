@@ -27,5 +27,5 @@ def test_guest_can_add_product_to_basket(browser):
 	
 	page.check_correct_name_product_in_basket(ProductPageLocators.PRODUCT_NAME)
 	page.check_correct_price_product_in_basket(ProductPageLocators.PRICE_PRODUCT)
-	time.sleep(10)
+	
 	
