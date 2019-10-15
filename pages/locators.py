@@ -22,4 +22,11 @@ class ProductPageLocators():
 	MESSAGE_ADD_PRODUCT_TO_BASKET = (By.CSS_SELECTOR, '.alert-success > .alertinner strong')
 	PRICE_PRODUCT = (By.CSS_SELECTOR,'.product_main > .price_color')
 	PRICE_BASKET_AFTER_ADD_PRODUCT = (By.CSS_SELECTOR, '.alert-info > .alertinner p strong')
-	
+    
+class BasePageLocators():
+    """
+    Локаторы для базовой страницы
+    """
+    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, '#login_link_inc')
+    
