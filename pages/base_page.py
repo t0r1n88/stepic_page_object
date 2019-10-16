@@ -91,9 +91,3 @@ class BasePage():
         """
         item = self.browser.find_element(*css_selector)
         item.click()
-    def go_to_basket_page(self,css_selector):
-        """
-        Метод осуществляющий поиск и нажатие кнопки корзины
-        """
-        basket = self.browser.find_element(*css_selector)
-        basket.click()    
