@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 
 def pytest_addoption(parser):
     # Обработчик языка
-    parser.addoption('--language',action='store',default='ru',
+    parser.addoption('--language',action='store',default='en-gb',
     help='Choose language:ru,en,..(etc.)')
     # Обработчик для  вида браузера, по дефолту это Chrome
     parser.addoption('--browser_name', action='store', default='chrome',

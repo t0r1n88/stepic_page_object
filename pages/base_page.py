@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
 from .locators import BasePageLocators
+from selenium.webdriver.common.by import By
 class BasePage():
 
     """
@@ -84,3 +85,15 @@ class BasePage():
 		    return False
 	    return True
 			
+    def click_an_item(self,css_selector):
+        """
+        Метод осуществляющий клик по переданному элементу
+        """
+        item = self.browser.find_element(*css_selector)
+        item.click()
+    def go_to_basket_page(self,css_selector):
+        """
+        Метод осуществляющий поиск и нажатие кнопки корзины
+        """
+        basket = self.browser.find_element(*css_selector)
+        basket.click()    
