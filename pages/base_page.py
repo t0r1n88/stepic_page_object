@@ -91,3 +91,10 @@ class BasePage():
         """
         item = self.browser.find_element(*css_selector)
         item.click()
+    def should_be_authorized_user(self):
+        """
+        Проверка залогинен ли пользователь
+        """
+        assert self.is_element_present(*BasePageLocators.USER_ICON),"User icon is not presented," \
+                                                                 " probably unauthorised user"
+        

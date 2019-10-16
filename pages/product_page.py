@@ -52,14 +52,16 @@ class ProductPage(BasePage):
 		Да я знаю что нужно сравнивать цифры ,а не строки. Чтобы избежать ситуаций вроде 10 и 1000000 в строковом виде.
 		"""
 		#Получаем цену товара в виде строки
-		string_price_product = self.extract_text(price_product)
+		price_product = self.extract_text(price_product)
 	
 		# Получаем цену корзины
-		string_price_basket_after_add_product = self.extract_text(ProductPageLocators.PRICE_BASKET_AFTER_ADD_PRODUCT)
+		price_basket_after_add_product = self.extract_text(ProductPageLocators.PRICE_BASKET_AFTER_ADD_PRODUCT)
 		# #Конвертируем строку во float, предварительно отделив цифры от знака валюты с помощью split
+        # Кстати такой способ не работает, так как в зависимости от языка,знак валюты находится на разных местах
+        # На будущее надо запомнить, что не надо  изобретать велосипед каждый раз.
 		
-		price_product = self.convert_string(string_price_product)
-		price_basket_after_add_product = self.convert_string(string_price_basket_after_add_product)
+		# price_product = self.convert_string(string_price_product)
+		# price_basket_after_add_product = self.convert_string(string_price_basket_after_add_product)
 		
 		assert price_product == price_basket_after_add_product, 'Стоимость товара отличается'
 		
